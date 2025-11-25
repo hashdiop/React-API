@@ -16,13 +16,27 @@ export default function Userslist() {
 	   fetchData() 
 	 }, []) 
      console.log(usersdata.forEach(user => console.log(user.title)))
-  return (
-    <div className="gap-3">
-        {usersdata.map((user)=>{return (
-           <div key={user.id}>
-             <Usercard keyes={user.id} id={user.id} name={user.name} userName={user.userName} email={user.email}/>
-           </div>
-        )})}
+ return (
+  <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 p-4">
+    <div className="max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {usersdata.map((user) => (
+          <Usercard
+            key={user.id}
+            id={user.id}
+            name={user.name}
+            userName={user.userName}
+            email={user.email}
+            phone={user.phone}
+            website={user.website}
+          />
+        ))}
+      </div>
     </div>
-  )
+    <div className="max-w-7xl mx-auto my-5 p-10 w-fit bg-yellow-400  font-semibold from-sky-800 rounded rounded-e-full">
+      
+        <span>Nombre d'utilisateurs trouvés :</span><span className='text-green-500'> {usersdata.length}</span>
+  </div>
+  </div>
+);
 }
